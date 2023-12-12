@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla interactiva de las variables</title>
+    <link rel="stylesheet" type="text/css" href="style_table.css">
+    <!-- Incluye las bibliotecas de DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <!-- Configuración adicional de DataTables -->
+    <script>
+        $(document).ready( function () {
+            $('#miTabla').DataTable();
+        } );
+    </script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Tabla de las variables</h1>
+    </div>
+
+    <div class="content">
+        <!-- Agrega la tabla con el id "miTabla" -->
+        <table id="miTabla">
+            <thead>
+                <tr>
+                    <th>Campo</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                    <th>Base de datos </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>RBD</td>
+                    <td>int</td>
+                    <td>Corresponde a un identificador del establecimiento en la base de datos.</td>
+                    <td>Estudiantes</td>
+
+                </tr>
+                <tr>
+                    <td>MRUN</td>
+                    <td>int</td>
+                    <td>Corresponde a un rut mascara para identificar a los estudiantes en la base de datos.</td>
+                    <td>Estudiantes</td>
+                </tr>
+                <tr>
+                    <td>SEXO</td>
+                    <td>int</td>
+                    <td>Variable binaria que representa el género: 1 para Masculino, 2 para Femenino.</td>
+                    <td>Estudiantes</td>
+                </tr>
+                    <td>DEPENDENCIA</td>
+                    <td>str</td>
+                    <td> Variable categórica que representa el tipo de dependencia del establecimiento: <br> GRATUITO <br>PARTICULAR SUBVENCIONADO <br> PARTICULAR <br> CORPORACION</td>
+                    <td>Estudiantes</td>
+                </tr>
+                    <td>CODIGO_REGION_DOMICIO</td>
+                    <td>int</td>
+                    <td>Corresponde al código de la comuna de residencia del estudiante.</td>
+                    <td>Estudiantes</td>
+                </tr>
+                    <td>CODIGO_COMUNA_DOMICILIO</td>
+                    <td>int</td>
+                    <td>Corresponde al código de la comuna de residencia del estudiante.</td>
+                    <td>Estudiantes</td>
+                </tr>
+                    <td>INGRESO_PERCAPITA_GRUPO_FA</td>
+                    <td>int</td>
+                    <td>Categoría de deciles de ingresos per cápita familiar: <br> 1: $0-$71,093, <br> 2: $71,094-$112,383, <br> 3: $112,384-$148,930, <br> 4: $148,931-$185,460, <br> 5: $185,461-$226,261, <br> 6: $226,262-$284,709, <br> 7: $284,710-$361,741, <br> 8: $361,742-$487,065, <br> 9: $487,066-$792,143, <br>  10: $792,144 y más, <br> 99: Prefiero no responder </td>
+                    <td>Estudiantes</td>
+                </tr>
+                    <td>CONEXION_INSUFIENTE</td>
+                    <td>int</td>
+                    <td>Categoría de conexión a internet: <br> 1: Nunca o casi nunca, <br> 2: Unas pocas veces, <br> 3: A menudo, <br> 4: Siempre o casi siempre, <br> 5: No requería de conexión a internet para realizar mis labores académicas, <br> 9: Prefiero no responder</td>
+                    <td>Estudiantes</td>
+                </tr>
+                <tr>
+                    <td>PROMEDIO_NOTAS</td>
+                    <td>float</td>
+                    <td>Promedio de notas del estudiante, es un valor entre 1.0 a 7.0</td>
+                    <td>Estudiantes</td>
+                </tr>
+                <tr>
+                    <td>PJTE_NEM</td>
+                    <td>int</td>
+                    <td>Puntaje NEM del estudiante, es un valor entre 100 a 1000</td>
+                    <td>Estudiantes</td>
+                </tr>
+                <tr>
+                    <td>PJTE_RANKING</td>
+                    <td>int</td>
+                    <td>Puntaje Ranking del estudiante, es un valor entre 100 a 1000</td>
+                    <td>Estudiantes</td>
+                </tr>
+                <tr>
+                    <td>CLEC_MAX</td>
+                    <td>int</td>
+                    <td>Corresponde al puntaje obtenido en la prueba de Comprension Lectora</td>
+                    <td>Estudiantes</td>
+                </tr>
+                <tr>
+                    <td>MATE1_MAX</td>
+                    <td>int</td>
+                    <td>Corresponde al puntaje obtenido en la prueba de Matemáticas 1 (M1)</td>
+                    <td>Estudiantes</td>
+                </tr>
+                <tr>
+                    <td>PUNTAJE_PONDERADO</td>
+                    <td>float</td>
+                    <td>Puntaje ponderado del estudiante, es un valor entre 100 a 1000. Cuando este valor es 0, significa que el estudiante no se matriculo via PAES</td>
+                    <td>Estudiantes</td>
+                </tr>
+                <tr>
+                    <td>NOMBRE_INSTITUCION</td>
+                    <td>str</td>
+                    <td>Nombre del establecimiento al que se matriculo el estudiante</td>
+                    <td>Estudiantes</td>
+                </tr>
+                <tr>
+                    <td>VIA_ADMISION</td>
+                    <td>int</td>
+                    <td>Via de admisión a la que se matriculó el estudiante. Ademas corresponde a una variable categorica <br> 1: Vacantes regulares, <br> 2: Repostulación, <br> 3: Oficio de Verificación, <br> 4: Cupos supernumerarios BEA, <br> 5: Oficio de Excepción, <br> 6: Cupos PACE, <br> 7: Admisión Especial, <br> 8: Pedagogía Percentil 50, <br> 9: Pedagogía 30% superior notas, <br> 10: Programa de Acceso a Pedagogía (PAP) </td>
+                    <td>Estudiantes</td>
+                </tr>
+                <tr>
+                    <td>COD_DEPE</td>
+                    <td>str</td>
+                    <td> Variable categórica que representa el tipo de dependencia del establecimiento: <br> GRATUITO <br>PARTICULAR SUBVENCIONADO <br> PARTICULAR <br> CORPORACION</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>COD_REG_RBD</td>
+                    <td>int</td>
+                    <td>Corresponde al código de la región del establecimiento</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>COD_COM_RBD</td>
+                    <td>int</td>
+                    <td>Corresponde al código de la comuna del establecimiento</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>MAT_TOTAL</td>
+                    <td>int</td>
+                    <td>Corresponde a la cantidad de alumnos en el establecimiento</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>DC_TOT</td>
+                    <td>int</td>
+                    <td>Corresponde a la cantidad de docentes en el establecimiento</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>PROMEDIO_NOTAS</td>
+                    <td>float</td>
+                    <td>Promedio de notas del establecimiento, es un valor entre 1.0 a 7.0</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>PJTE_NEM</td>
+                    <td>int</td>
+                    <td>Puntaje NEM del establecimiento, es un valor entre 100 a 1000</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>PJTE_RANKING</td>
+                    <td>int</td>
+                    <td>Puntaje Ranking del establecimiento, es un valor entre 100 a 1000</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>CLEC_MAX</td>
+                    <td>int</td>
+                    <td>Corresponde al puntaje promedio obtenido en la prueba de Comprension Lectora</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>MATE1_MAX</td>
+                    <td>int</td>
+                    <td>Corresponde al puntaje promedio obtenido en la prueba de Matemáticas 1 (M1)</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>ALUMNOS</td>
+                    <td>int</td>
+                    <td>Corresponde a la cantidad de alumnos en el establecimiento que rindieron la prueba PAES</td>
+                    <td>Establecimientos</td>
+                </tr>
+                <tr>
+                    <td>geometry</td>
+                    <td>geometry</td>
+                    <td>Corresponde a la ubicación geográfica del establecimiento</td>
+                    <td>Establecimientos</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ 
+</body>
+</html>

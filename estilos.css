@@ -1,0 +1,304 @@
+
+
+ body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2c3e50; /* Dark blue background */
+            color: #ecf0f1; /* Light grey text for high contrast */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            
+        }
+        .introduction {
+            text-align: left;
+            margin-bottom: 40px;
+            background-color: #34495e; /* Slightly lighter blue for the introduction section */
+            padding: 20px;
+            border-radius: 5px; /* Added for a slight rounded corner */
+            text-align: justify;
+        }
+        .introduction h1 {
+            font-size: 28px;
+            color: #ecf0f1; /* Maintaining light grey text for the title */
+        }
+        .introduction p {
+            font-size: 18px;
+            color: #ecf0f1; /* Light grey text for paragraph for better readability */
+            margin-top: 10px;
+        }
+        .interactive-image {
+            width: 250px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin: 10px;
+            display: inline-block;
+        }
+        .interactive-image:hover {
+            transform: scale(1.05);
+        }
+        .footer {
+            font-size: 14px;
+            color: #95a5a6; /* Light grey for the footer text */
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50; /* Matching the body background for the footer */
+        }
+        .process-images {
+            display: flex;
+            justify-content: space-around; /* Distribute space evenly */
+            margin-top: 20px;
+        }
+        .process-image {
+            width: 30%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .process-image img {
+            width: 100%;
+            border-radius: 5px; /* Rounded corners for aesthetics */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+        .process-image:hover {
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+/* ------------------------- */
+/* Overlay */
+/* ------------------------- */
+.overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0,.9);
+	width: 150%;
+	height: 100vh;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.overlay.activo {
+	display: flex;
+}
+
+.overlay img {
+	max-width: 150%;
+}
+
+.overlay .descripcion {
+	display: block;
+	background: #fff;
+	padding: 20px;
+	text-align: center;
+	margin-top: 5px;
+	border-radius: 10px;
+	max-width: 50%;
+}
+
+.contenedor-img {
+	position: relative;
+}
+
+.overlay #btn-cerrar-popup {
+	background: none;
+	font-size: 20px;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	right: -20px;
+	top: -20px;
+}
+
+/* ------------------------- */
+/* Footer */
+/* ------------------------- */
+footer .redes-sociales {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	padding: 20px;
+	flex-wrap: wrap;
+}
+
+footer .redes-sociales a {
+	display: block;
+	width: 60px;
+	height: 60px;
+	background: #000;
+	color: #fff;
+	margin: 20px;
+	text-align: center;
+	border-radius: 100px;
+	transition: .3s ease all;
+}
+
+footer .redes-sociales .twitter {background: #1da1f2;}
+footer .redes-sociales .facebook {background: #3b5998;}
+footer .redes-sociales .instagram {background: #c13584;}
+
+footer .redes-sociales a i {
+	font-size: 20px;
+	line-height: 60px;
+}
+
+footer .contenedor-icono:hover a {
+	animation: icono .5s ease;
+}
+
+@keyframes icono {
+	from {
+		transform: rotate3d(0,0,0,0);
+	}
+	to {
+		transform: rotate3d(0,1,0, 360deg);
+	}
+}
+
+footer .creado-por {
+	margin-bottom: 40px;
+	text-align: center;
+	font-size: 14px;
+	color: #c13584;
+}
+
+footer .creado-por a {color: #000;}
+footer .creado-por a:hover {text-decoration: underline;}
+
+/* ------------------------- */
+/* Mediaqueries */
+/* ------------------------- */
+@media screen and (max-width: 700px) {
+    .grid .item {
+        width: 100%; /* Cada item ocupa el ancho completo */
+    }
+}
+
+.accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-around; /* This will space out your images nicely */
+    align-items: center; /* This will align images vertically in the middle */
+    flex-wrap: wrap; /* This allows images to wrap onto the next line on small screens */
+    gap: 10px; /* This adds space between the images */
+}
+
+
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Fijo en la página */
+  z-index: 1; /* Encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  background-color: rgba(0,0,0,0.4); /* Fondo negro con opacidad */
+}
+
+/* Estilo para la modal */
+.modal-content {
+  margin: auto; /* Margen automático para centrar la imagen */
+  display: block; /* Bloque para aplicar márgenes automáticos */
+  width: 80%; /* Ancho máximo de la imagen */
+  max-height: 100vh; /* Altura máxima de la imagen */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+/* Agregar animación */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* Botón para cerrar */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.img-clickable {
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Suaviza la transición de la transformación y la sombra */
+}
+
+.img-clickable:hover {
+  transform: scale(1.05); /* Aumenta el tamaño de la imagen */
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.6); /* Agrega una sombra para un efecto 3D */
+}
+
+h3 {
+  color: #2c3e50;
+  text-align: center;/* Establece el color del texto de h3 */
+
+a {
+    color: #FF0000; /* Cambia esto al color que prefieras */
+}
+
+a:hover {
+    color: #00FF00; /* Cambia esto al color que prefieras cuando el mouse pasa sobre el enlace */
+}
+
+a:visited {
+    color: #0000FF; /* Cambia esto al color que prefieras para los enlaces visitados */
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hombre {
+    color: #e6194B; /* Color de texto para hombre */
+  }
+
+  .mujer {
+    color: #3cb44b; /* Color de texto para mujer */
+  }

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ETL</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+	<link rel="stylesheet" href="estilos.css">
+    <style>
+.panel img {
+    max-width: 40%;
+    height: auto;
+    display: block; /* Optional: it centers the image if margin is auto */
+    margin: 10px auto; /* Optional: it adds space and centers the image */
+}
+.image-container {
+    display: flex;
+    justify-content: space-around; /* This will space out your images nicely */
+    align-items: center; /* This will align images vertically in the middle */
+    flex-wrap: wrap; /* This allows images to wrap onto the next line on small screens */
+    gap: 10px; /* This adds space between the images */
+}
+.container {
+            max-width: 1500px;
+            margin: auto;
+            padding: 20px;
+
+ .texto-rojo {
+      color:  #2c3e50;
+      font-size: 22px;
+    }
+   .styled-image {
+    width: 100%; /* O cualquier ancho que prefieras */
+    max-width: 80%; /* O cualquier máximo que prefieras */
+
+}
+
+.styled-image2 {
+    width: 100%; /* O cualquier ancho que prefieras */
+    max-width: 80%; /* O cualquier máximo que prefieras */
+
+}
+.hombre {
+    color: #e6194B; /* Color de texto para hombre */
+    font-size: 20px;
+  }
+
+  .mujer {
+    color: #3cb44b; /* Color de texto para mujer */
+    font-size: 20px;
+  }
+h2 {
+    color: #2c3e50; /* Color de texto para mujer */
+    font-size: 20px;
+  }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="introduction">
+            <h1>Analisis Exploratorio de Datos</h1>
+
+<button class="accordion">¿Existe una relación entre el tipo de establecimiento educacional y el puntaje ponderado de la PAES? ¿En las pruebas obligatorias, se observan diferencias?</button>
+<div class="panel">
+  <p class = texto-rojo>Los boxplots o diagramas de caja son esenciales para la exploración de datos, ya que ofrecen una visualización concisa de la distribución de un conjunto de datos. Al representar los puntajes ponderados de estudiantes matriculados en 2023, estos gráficos permiten comparar rápidamente mediana
+	  , rangos intercuartílicos y valores atípicos entre distintos tipos de establecimientos educativos. Esta comparación es clave para evaluar la equidad en el acceso a la educación superior. Los boxplots ilustran la dispersión y tendencias centrales, identificando dónde se concentran los datos y dónde se desvían, lo que es vital para entender las diferencias en los resultados educativos y para dirigir intervenciones educativas. Con su capacidad para destacar anomalías y tendencias, los boxplots son herramientas poderosas para fundamentar políticas educativas enfocadas en la inclusión y la equidad.
+
+
+
+
+
+.</p>
+	 <div class="image-container">
+      <img src="graficos/boxplot_tipo_establecimiento_clec.png" alt="Descripción de la imagen">
+	 <img src="graficos/boxplot_tipo_establecimiento_mate1.png" alt="Descripción de la imagen">
+	<img src="graficos/boxplot_tipo_establecimiento_ponderado.png" alt="Descripción de la imagen">
+	 </div>
+
+	<p class = texto-rojo >"Los análisis han demostrado una correlación significativa entre el tipo de institución educativa a la que asisten los estudiantes y sus puntajes en la PAES; evidenciando que esta relación no es menor sino sustancialmente marcada. Es crucial destacar que, aunque a veces parezcan mínimas, las variaciones en los puntajes adquieren gran relevancia en el competitivo proceso de admisión universitaria. Incluso pequeños incrementos pueden ser decisivos, marcando la diferencia entre ser admitido o no en la institución deseada. Este fenómeno resalta la disparidad de oportunidades educativas, que se ve reflejada directamente en los resultados de estas evaluaciones estandarizadas y, por ende, en el futuro académico y profesional de los jóvenes.</p>
+</div>
+
+<button class="accordion">¿Existen diferencia entre el ingreso familiar y el puntaje de admisión? ¿En las pruebas obligatorias, se observan diferencias?</button>
+<div class="panel">
+	<p class = texto-rojo>"En nuestro análisis, utilizaremos diagramas de caja o boxplots para examinar la distribución de los puntajes de admisión en función del ingreso familiar. Se empleará la variable INGRESO_PERCAPITA_GRUPO_FA, que clasifica a los candidatos según deciles de ingreso per cápita familiar, proporcionando así una categorización clara basada en la situación económica. Conjuntamente, se analizará la variable PUNTAJE_PONDERADO, que refleja los puntajes ponderados de admisión. Esta metodología nos permite visualizar no solo la tendencia central y la dispersión de los puntajes, sino también identificar posibles patrones y anomalías en relación con la estratificación económica, ofreciendo una perspectiva integral de cómo el contexto socioeconómico podría influir en los resultados de las pruebas de admisión universitaria.</p>
+
+
+	<div class="image-container">
+      <img src="graficos/boxplot_ingreso_ponderado.png" alt="Descripción de la imagen">
+
+	 </div>
+	<p class = texto-rojo> Obtenemos que un ingreso familiar en promedio asegura un un mejor puntaje de admsion, esto se puede deber a que al tener mejores ingresos uno puede matricularse a un colegio de mejor calidad, o incluso tiene los recursos para pagar un preuniversitario. Sin embargo, la diferencia no es tan grande, y se puede ver que incluso los estudiantes con un ingreso familiar bajo pueden obtener un buen puntaje de admision.</p>
+
+</div>
+<button class="accordion">¿Como se distribuyen los promedios de las pruebas obligatorias de la PAES en un mapa de Chile (nivel nacional)? ¿Existen diferencias entre las regiones? ¿En el caso de existir diferencias, estas se pueden explicar por factores socioeconómicos? ¿El problema de la educación chilena es algo generalizado en las regiones?</button>
+
+			<div class="panel">
+<img src="graficos/A.jpg" >
+				<div class="image-container">
+				 <figure>
+				<h3>Comprension Lectora</h3>
+				<img class="process-image" id="myImg1" src="graficos/mapa_clec.png" alt="Descripción de la imagen" style="width:100%;max-width:300px">
+					  </figure>
+					 <figure>
+      			<h3>Matemáticas</h3>
+				<img class="process-image"  id="myImg2" src="graficos/mapa_mate1.png" alt="Descripción de la imagen" style="width:100%;max-width:300px">
+						 </figure>
+				</div>
+
+	<div class = "container"><p class = texto-rojo>La observación detallada de los mapas revela diferencias significativas entre regiones en términos de la cantidad de establecimientos educativos y su participación en el proceso de rendición de la PAES. Notablemente, la región metropolitana sobresale por su alta inscripción, mientras que Magallanes muestra una menor cantidad de establecimientos registrados. Incluso dentro de la región metropolitana, existen disparidades, con Santiago centro albergando una mayor densidad de instituciones educativas en comparación con su periferia. Al expandir nuestro análisis a múltiples regiones, detectamos una heterogeneidad en los resultados; ciertos puntos muestran una intensidad de rojo más pronunciada, indicando una concentración de establecimientos con puntajes inferiores, mientras que áreas con un predominio de azul señalan a instituciones de mayor calibre educativo, generalmente ubicadas en zonas urbanas. Por otro lado, los establecimientos de menor calidad tienden a situarse en la periferia urbana o en zonas rurales.
+
+Este patrón no es solo una cuestión de geografía; tiene sus raíces en factores socioeconómicos, ya que las escuelas más alejadas de las grandes urbes suelen contar con menos recursos. Al examinar específicamente la distribución de los puntajes en matemáticas, se aprecia una tendencia similar pero más acusada. Hay una mayor acumulación de áreas azules que sugiere una concentración más alta de buenos resultados en matemáticas en ciertas localidades. Este fenómeno podría estar vinculado con la calidad y enfoque de los programas educativos en matemáticas, la disponibilidad de docentes especializados en estas áreas, así como con el acceso a materiales didácticos y recursos de apoyo para el aprendizaje de esta disciplina.</p>
+
+				<p class = texto-rojo >El párrafo anterior no especificaba la asignatura de los puntajes ni comparaba matemáticas con comprensión lectora. Sin embargo, si la observación de los mapas indica que hay una mayor cantidad de puntos azules en la prueba de matemáticas en comparación con la prueba de comprensión lectora, esto sugiere que, en general, los estudiantes obtienen puntajes más bajos en matemáticas que en comprensión lectora. Esta tendencia es una señal de que los estudiantes pueden estar enfrentando mayores desafíos con el currículo de matemáticas o que los métodos de enseñanza de matemáticas podrían no estar siendo tan efectivos como los de comprensión lectora.
+
+En la Región Metropolitana, donde se espera que la concentración de recursos educativos y el acceso a la educación de calidad sean más altos, la presencia de más puntos azules en matemáticas es notable. Esto podría reflejar una disparidad en la calidad o el enfoque del aprendizaje de matemáticas en comparación con comprensión lectora, incluso en las zonas urbanas con mejor acceso a la educación.
+
+La diferencia también podría apuntar a la posibilidad de que las habilidades de comprensión lectora se desarrollen más uniformemente a través de diversas actividades educativas y cotidianas, mientras que las habilidades matemáticas pueden requerir un enfoque más especializado y una enseñanza que no todos los estudiantes están recibiendo. Este contraste entre las dos asignaturas podría implicar la necesidad de una revisión de los programas de estudio y metodologías de enseñanza de matemáticas, particularmente en la Región Metropolitana, para abordar estas diferencias en el rendimiento.</p></div>
+</div>
+<button class="accordion">¿Existen diferencias en los puntajes de admisión entre géneros? ¿En qué áreas son más pronunciadas?</button>
+<div class="panel">
+
+<p class="hombre">Hombres.</p>
+<p class="mujer">Mujer.</p>
+
+
+	<div class="image-container">
+				 <figure>
+				<h3>Comprension Lectora</h3>
+				<img class="process-image" id="myImg3" src="graficos/boxplot_clec_genero.png" alt="Descripción de la imagen" style="width:100%;max-width:300px">
+					  </figure>
+					 <figure>
+      			<h3>Matemáticas</h3>
+				<img class="process-image"  id="myImg4" src="graficos/boxplot_mate1_genero.png" alt="Descripción de la imagen" style="width:100%;max-width:300px">
+						 </figure>
+				</div>
+
+	<p class = "texto-rojo" >En los boxplots proporcionados, se observa que las medias de los puntajes en comprensión lectora entre hombres y mujeres son comparativamente más parejas o iguales. Sin embargo, en matemáticas, se manifiesta una brecha donde las mujeres presentan puntajes medios inferiores. Esto señala la necesidad de abordar los factores socioeducativos y culturales que pueden influir en el desempeño y el interés de las mujeres en áreas como las matemáticas. Programas diseñados para inspirar y fomentar la participación femenina en STEM y en ingeniería son cruciales para equilibrar las disparidades de género y promover la diversidad en campos de importancia estratégica para el desarrollo innovador y tecnológico.</p>
+</div>
+
+
+
+
+<button class="accordion">¿Existe una relación entre el promedio de notas en la enseñanza media y los puntajes de admisión?</button>
+<div class="panel">
+  <p>Contenido de la respuesta a la Pregunta 5.</p>
+
+	<div class="image-container">
+      <img  class="process-images" src="graficos/regresion_promedio_ponderado.png" alt="Descripción de la imagen">
+
+	 </div>
+	<p class = "texto-rojo">
+El gráfico proporcionado muestra una correlación positiva entre el promedio de notas y el puntaje ponderado; es decir, a medida que el promedio de notas aumenta, también lo hace el puntaje ponderado. La línea roja indica una tendencia en la que los estudiantes con mayores promedios tienden a obtener puntajes ponderados más altos en las pruebas estandarizadas.
+
+Para analizar si esta tendencia se refleja en todas las regiones de Chile Realizaremos la misma regresion lineal pero con los datos por región, para asi poder analizar la correlación entre promedios de notas y puntajes ponderados para cada área geográfica de Chile. Esto nos permitirá ver si la tendencia general se mantiene o varía en distintas regiones. La creación de gráficos de dispersión regionales nos ayudará a visualizar la relación entre las variables y entender mejor las dinámicas educativas en el país.
+.</p>
+	<button class="accordion">Click para ver los modelos de Regresion Polimonial a las regiones de Chile</button>
+	<div class = "panel">
+	 <figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_1.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_2.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_3.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_4.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_5.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_6.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_7.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure><figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_8.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure><figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_9.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_10.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_11.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_12.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_13.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_14.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_15.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_16.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	<figure>
+
+	<img class="process-image"  src="graficos/polinomio_region_1.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	</div>
+	<p class = "texto-rojo">Al analizar los gráficos de regresión polinómica por región, se observa un patrón consistente: los alumnos con mayores promedios de notas tienden a obtener puntajes ponderados más altos. Esto sugiere que los estudiantes con buen rendimiento académico previo tienen una base más sólida al abordar la preparación para las pruebas estandarizadas, lo cual se traduce en mejores resultados. Esta tendencia implica que un buen desempeño escolar no solo refleja la capacidad actual del estudiante, sino que también puede ser indicativo de una preparación más efectiva para exámenes futuros, lo que subraya la importancia de una educación de calidad desde las etapas tempranas.</p>
+
+	<div class="image-container">
+      <img  class="process-images" src="graficos/diferencia.png" alt="Descripción de la imagen">
+	<p class = "texto-rojo">El gráfico muestra el promedio del coeficiente de determinación
+
+R2
+  para diferentes tipos de escuelas: municipales, subvencionadas y privadas. Se observa que el modelo de regresión polinómica se ajusta ligeramente mejor en las escuelas privadas (con un
+
+R2
+  de 0.7595) comparado con las municipales (0.7207) y subvencionadas (0.7333). Aunque la diferencia no es sustancial, indica que las variables consideradas en el modelo podrían estar explicando en mayor medida el rendimiento de los estudiantes en las escuelas privadas. Esto sugiere que factores asociados a la educación privada podrían estar contribuyendo a un rendimiento más predecible o uniforme en las pruebas estandarizadas, en comparación con los otros tipos de escuelas.</p>
+	 </div>
+	<p class = "texto-rojo">
+Al aplicar el modelo de regresión polinómica por separado a las pruebas de comprensión lectora y matemáticas, podríamos encontrar que el modelo no se ajusta de la misma manera para ambas pruebas en comparación con el puntaje ponderado. Esto podría indicar que la relación entre las notas escolares y los resultados de pruebas específicas es más compleja y posiblemente influenciada por factores distintos a los que afectan el puntaje ponderado global. Podría ser que el modelo de regresión polinómica no capture todas las variables relevantes o las dinámicas subyacentes que influyen en el rendimiento en áreas específicas como la comprensión lectora o las matemáticas.</p>>
+	<h3>¿Cómo varía el ajuste del modelo de regresión polinómica cuando se analizan las pruebas de comprensión lectora y matemáticas de forma independiente, en lugar de en conjunto como un puntaje ponderado?</h3>
+
+		 <p class = "texto-rojo">Mostrando algunos ejemplos de regiones</p>
+	<button class="accordion">Antofagasta</button>
+	<div class = "panel">
+		<figure>
+
+	<img class="process-image"  src="graficos/antofa1.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+
+	<figure>
+
+	<img class="process-image"  src="graficos/antofa2.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+
+	<figure>
+
+	<img class="process-image"  src="graficos/antofa3.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	</div>
+
+
+	<button class="accordion">Region Metropolitana</button>
+	<div class = "panel">
+		<figure>
+
+	<img class="process-image"  src="graficos/santiago1.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+
+	<figure>
+
+	<img class="process-image"  src="graficos/santiago2.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+
+	<figure>
+
+	<img class="process-image"  src="graficos/santiago3.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	</div>
+
+
+
+	<button class="accordion">Region del Bio Bío</button>
+	<div class = "panel">
+		<figure>
+
+	<img class="process-image"  src="graficos/biobio1.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+
+	<figure>
+
+	<img class="process-image"  src="graficos/biobio2.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+
+	<figure>
+
+	<img class="process-image"  src="graficos/biobio3.png" alt="Descripción de la imagen" style="width:100%;max-width:100%">
+	  </figure>
+	</div>
+	<p class = "texto-rojo">Al analizar las pruebas de comprensión lectora y matemáticas separadamente por tipo de colegio en diferentes regiones, se observó que el modelo de regresión polinómica pierde precisión. El coeficiente
+
+R2
+  se reduce notablemente en ambos casos, siendo más pronunciada esta disminución en colegios municipales y subvencionados. Sin embargo, en los colegios privados, la reducción de
+R2
+  es mucho menos significativa, lo que podría indicar que el promedio de notas es un mejor predictor de los resultados de las pruebas en estos colegios en comparación con los otros tipos. Esto sugiere que, aunque el promedio de notas puede ser un indicador razonable del rendimiento en colegios privados, para colegios municipales y subvencionados sería prudente considerar otras variables que podrían influir en el rendimiento académico.
+
+	</p>
+
+
+	<p class = "texto-rojo">El buen ajuste del modelo de regresión polinómica a los datos ponderados podría deberse a que, al ponderar, se incluyen tanto el puntaje NEM (Notas de Enseñanza Media) como el ranking de notas, los cuales están estrechamente ligados al promedio de notas. Dado que estos factores constituyen una parte significativa de la ponderación utilizada por las universidades, que a menudo requieren que estos criterios representen el 50% o más del puntaje de admisión, es lógico que el promedio de notas sea un buen predictor del puntaje ponderado y, por lo tanto, resulte en un modelo de regresión que se ajusta bien a los datos.</p>>
+
+
+</div>
+<button class="accordion">¿La conexion a internet puede influir en el desempeño de los estudiantes en la PAES??</button>
+<div class="panel">
+  <p>Contenido de la respuesta a la Pregunta 6.</p>
+
+	<div class="image-container">
+				 <figure>
+				<h3>Comprension Lectora</h3>
+				<img class="process-image" id="myImg5" src="graficos/1.png" alt="Descripción de la imagen" style="width:100%;max-width:300px">
+					  </figure>
+					 <figure>
+      			<h3>Matemáticas</h3>
+				<img class="process-image"  id="myImg6" src="graficos/output2.png" alt="Descripción de la imagen" style="width:100%;max-width:300px">
+						 </figure>
+				</div>
+	<p class = "texto-rojo">Mediante la estadística descriptiva, específicamente utilizando boxplots, se ha podido observar una tendencia en las diferentes regiones del país en las pruebas de comprensión lectora y matemáticas, relacionada con la calidad de la conexión a internet de los alumnos. Los estudiantes con conexiones inestables o de baja calidad tienden a tener medias inferiores en comparación con aquellos que disponen de una conexión a internet estable y de buena calidad, lo cual podría implicar que el acceso a recursos digitales confiables es un factor importante en el rendimiento académico.
+
+<p class = "texto-rojo">Para perfeccionar el modelo de regresión polinómica inicial que evaluaba la relación entre el promedio de notas y el puntaje ponderado, se procedió a implementar un modelo de regresión lineal múltiple, incorporando la calidad de la conexión a internet como una variable adicional. Este enfoque permitió analizar el impacto combinado del promedio de notas y la estabilidad de la conexión a internet en el rendimiento académico, proporcionando así una visión más comprensiva de cómo estas variables interactúan y afectan los resultados de los estudiantes.</p>
+
+
+
+</p>
+	<div class="image-container">
+      <img src="graficos/multiple.jpg" alt="Descripción de la imagen">
+	 </div>
+
+
+	<p class = "texto-rojo">a integración de la variable CONEXION_INSUFICIENTE al modelo de regresión que ya contaba con PROMEDIO_NOTAS para la predicción del PTJE_PONDERADO resultó en una leve mejora del coeficiente R-cuadrado de 0.698 a 0.702. Aunque esto representa un avance, al desglosar el análisis por pruebas individuales de matemáticas y comprensión lectora y aplicarlo a diferentes tipos de establecimientos educacionales —municipales, subvencionados y privados—, el modelo no se ajusta de manera óptima. Esto indica que hay otras variables significativas que afectan el desempeño en la prueba PAES, sugiriendo la necesidad de explorar factores adicionales que puedan influir en los resultados académicos en estas áreas específicas.</p>
+</div>
+			<h2>Proceso de Estudio</h2>
+            <div class="process-images">
+            <div class="process-image" onclick="location.href='etl.html';">
+                <img src="plots/etl2.png" alt="ETL Process" />
+                <p>Proceso ETL</p>
+            </div>
+            <div class="process-image" onclick="location.href='discussion.html';">
+                <img src="plots/eda.png" alt="Discussion Section" />
+                <p>Discusión</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="footer">
+            <!-- Footer content goes here -->
+            <section class="overlay" id="overlay">
+			<div class="contenedor-img">
+				<button id="btn-cerrar-popup"><i class="fas fa-times"></i></button>
+				<img src="" alt="">
+			</div>
+			<p class="descripcion"></p>
+		</section>
+			<footer class="contenedor">
+			<div class="redes-sociales">
+				<div class="contenedor-icono">
+					<a href="https://github.com/tremendapithon/proyecto_imt" target="_blank" class="github">
+						<i class="fab fa-github"></i>
+					</a>
+				</div>
+			</div>
+		</footer>
+        </div>
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+
+</div>
+
+<!-- Repeat for the rest of the questions -->
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+// Obteniendo la modal y la imagen dentro de la modal
+var modal = document.getElementById("myModal");
+var modalImg = document.getElementById("img01");
+
+// Función para abrir la modal con la imagen correcta
+function openModal(imgElement) {
+  modal.style.display = "block";
+  modalImg.src = imgElement.src;
+}
+
+// Obteniendo las imágenes que se pueden hacer clic
+var img1 = document.getElementById("myImg1");
+var img2 = document.getElementById("myImg2");
+var img3 = document.getElementById("myImg3");
+var img4 = document.getElementById("myImg4");
+var img5 = document.getElementById("myImg5");
+var img6 = document.getElementById("myImg6");
+// Eventos de clic para las imágenes
+img1.onclick = function() { openModal(this); }
+img2.onclick = function() { openModal(this); }
+img3.onclick = function() { openModal(this); }
+img4.onclick = function() { openModal(this); }
+img5.onclick = function() { openModal(this); }
+img6.onclick = function() { openModal(this); }
+
+// Obteniendo el elemento <span> que cierra la modal
+var span = document.getElementsByClassName("close")[0];
+
+// Cuando el usuario hace clic en <span> (x), cierra la modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
+
+    </div>
+    <script>
+        function goToAnalysis() {
+            // Navigate to the analysis section
+            window.location.href = 'analysis.html';
+        }
+
+        function goToDiscussion() {
+            // Navigate to the discussion section
+            window.location.href = 'discussion.html';
+        }
+    </script>
+
+</body>
+</html>

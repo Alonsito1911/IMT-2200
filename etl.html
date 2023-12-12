@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ETL</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+	<link rel="stylesheet" href="estilos.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="introduction">
+            <h2>Extraccion y procesamiento de los datos</h2>
+
+		<p>La extraccion de los datos se realizo en la web de <a href="https://datosabiertos.mineduc.cl/">datos abiertos</a> del Ministerio de Educacion de Chile. Donde se extrajeron los datos de los <a href="https://datosabiertos.mineduc.cl/pruebas-de-admision-a-la-educacion-superior/">estudiantes</a>, <a href="https://datosabiertos.mineduc.cl/directorio-de-establecimientos-educacionales/">establecimientos</a> y de la <a href="https://datosabiertos.mineduc.cl/resumen-de-matricula-por-establecimiento-educacional/">matricula</a> por establecimiento. Y a su vez se descargaron los siguientes archivos: <p>
+            <ul>
+            <li><a href="https://datosabiertos.mineduc.cl/wp-content/uploads/2023/05/Prueba-de-Acceso-a-la-Educacion-Superior-2023-Inscritos-Puntajes-1.rar">Puntaje Inscritos PAES</a></li>
+            <li><a href="https://datosabiertos.mineduc.cl/wp-content/uploads/2023/04/Prueba-de-Acceso-a-la-Educacion-Superior-2023-Matricula.rar" >Matriculados PAES 2023</a></li>
+            <li><a href="https://datosabiertos.mineduc.cl/wp-content/uploads/2023/05/Prueba-de-Acceso-a-la-Educacion-Superior-2023-Socioeconomicos.zip">Socioeconomico Domicilio 2023</a></li>
+            <li><a href="https://datosabiertos.mineduc.cl/wp-content/uploads/2023/05/Prueba-de-Acceso-a-la-Educacion-Superior-2023-Postulantes-Regulares.zip" >Postulaciones Universidad 2023</a></li>
+            <li><a href="https://datosabiertos.mineduc.cl/wp-content/uploads/2023/10/Resumen-matricula-EE-2023.rar">Resumen de Matricula por establecimiento educacional</a> </li>
+            <li> <a href="https://datosabiertos.mineduc.cl/wp-content/uploads/2023/10/Directorio-oficial-EE-2023.rar">Directorio Oficial EE </a></li>
+            <li><a href="https://datosabiertos.mineduc.cl/wp-content/uploads/2023/08/Resumen-docentes-EE-2023.rar">Dotacion Docente </a></li>
+            </ul>
+        </p>
+        <p>Una vez con la informacion ya recolectada, se opto agrupar las bases de datos por MRUN (id estudiantes) y RBD (id establecimientos): </p>
+        <img src="diag_agrupacion.jpg" width="800" height="500" alt="Diagrama de agrupacion de datos" class="center">
+        <P>Una vez agrupado los datos, se realizo el siguiente procedimiento sobre esta nueva base de base de datos contenida en "df_estudiantes"</P>
+        <pre><code>df_estudiantes = df["inscritos_puntajes_2023"].merge(df["socioeconomico_domicilio_2023"], how="inner", on="MRUN", suffixes=(" ", " "))</code></pre>
+        <h2>1. Corrección de datos:</h2>
+        <p>Se ajustan datos faltantes o mal formateados, como cambiar comas por puntos en las notas y manejar valores vacíos.</p>
+
+        <h2>2. Limpieza de datos:</h2>
+        <p>Se eliminan estudiantes sin información de notas para garantizar la coherencia de los datos.</p>
+
+        <h2>3. Asignación de valores por defecto:</h2>
+        <p>A los estudiantes sin información sobre el Registro de Establecimiento (RBD) se les asigna el valor "No info". Además, aquellos que no poseean CODIGO_COMUNA_DOMICIO (valor " "), se les asigna el valor 0.</p>
+
+        <h2>4. Selección de variables y conversión de tipos:</h2>
+        <p>Se eligen variables específicas y se ajustan los tipos de datos según sea necesario. Posteriormente se guardamos la base de datos en "estudiantes_2023.parquet"</p>
+        <p>Una vez completado este proceso, se seleccionaron las columnas más relevantes para el análisis de puntajes y situación socioeconómica, entre otros (ver <a href="tables.html">variables</a>).</p>
+        <p>Finalmente, se agruparon nuevamente los datos, esta vez combinando la base de datos "df_estudiantes" con información adicional sobre los matriculados y los resultados de la postulación. Obteniendo una base de datos de almacenada en "df_matriculados"</p>
+        <pre><code>df_matriculados = df_estudiantes.merge(df["matriculados_2023"], how="inner", on="MRUN", suffixes=(" ", " "))</code></pre>
+        <p>Pero de la base de datos con la informacion de las postulaciones, implementamos un algoritmo que busca el puntaje ponderado del estudiante y lo almacena en el "df_matriculados". Dicho algoritmo se encuentra en <a href="https://github.com/tremendapithon/proyecto_imt/blob/main/extras/ptje_ponderado.py">ptje_ponderado.py </a>, y despues de lo anterior la base de datos se guarda como "matriculados_2023.parquet"</p>
+        <br>
+        <P>Ahora preparamos otra base de datos agrupando los establecimientos por el RBD, obteniendo una base de datos contenida en "df_establecimientos</P>
+        <p>Sin embargo, lo primero que hacemos es preparar un nuevo dataframe con los promedios de notas, Nem, Ranking, Comprension Lectora y Matematicas 1. Este nuevo dataframe se agrupa por RBD, obteniendo el "df_promedios".
+        <P>Despues esta informacion es agrupada de la siguiente manera: 
+            <pre><code>df_establecimientos = df_establecimientos.merge(df_promedios, how="inner", on="RBD", suffixes=(" ", " "))</code></pre>
+        </P>
+        <p>Ahora creamos "geometry" para poder graficar estos establecimientos, pero previamente eliminamos cuyos establecimientos no tengan latitud y longitud (ademas de convertirlos en float), y despues aplicamos la siguiente funcion:</p>
+        <pre><code>df_establecimientos["geometry"] = df_establecimientos.apply(lambda x: Point((float(x.LONGITUD), float(x.LATITUD))), axis=1)</code></pre>
+        <p>Y despues realizamos un par de modificaciones, principalmente donde cambiamos el crs a 5360 y eliminamos columnas inneceraias</p>
+        <pre><code>
+            df_establecimientos.drop(["LATITUD", "LONGITUD"], axis=1, inplace=True)
+            gpd_establecimientos = gpd.GeoDataFrame(df_establecimientos, geometry="geometry")
+            gpd_establecimientos.COD_DEPE = gpd_establecimientos.COD_DEPE.apply(lambda x: remplazar_cod_depe(x)).astype(str)
+            gpd_establecimientos.crs = pyproj.CRS.from_epsg(5360)
+            gpd_establecimientos.to_parquet(os.path.join("data", "establecimientos_2023.parquet"), engine="pyarrow", compression="snappy")</code></pre>
+        <p>Finalmente, se guardo la base de datos en "establecimientos_2023.parquet"</p>
+        <br>
+        <p>Por ultimo preparamos una base de datos con los limites cartograficos de las comunas de Chile</p>
+        <pre><code>gpd_comunas = gpd.read_file(os.path.join("data", "comunas", "comunas.parquet"))</code></pre>
+        <p>Esta base de datos no es tan relevante, solo nos ayudara a visualizar el mapa de Chile. Sin embaro, el enlace de descarga es <a href="https://www.bcn.cl/obtienearchivo?id=repositorio/10221/10396/2/Comunas.zip">este link</a>.</p>
+        
+        
+        </p>
+        
+        
+            <h2>Proceso de Estudio</h2>
+            <div class="process-images">
+            <div class="process-image" onclick="location.href='etl.html';">
+                <img src="plots/etl2.png" alt="ETL Process" />
+                <p>Proceso ETL</p>
+            </div>
+            <div class="process-image" onclick="location.href='eda.html';">
+                <img src="plots/foto2.png" alt="EDA Process" />
+                <p>Análisis Exploratorio de Datos (EDA)</p>
+            </div>
+            <div class="process-image" onclick="location.href='discussion.html';">
+                <img src="plots/eda.png" alt="Discussion Section" />
+                <p>Discusión</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="footer">
+            <!-- Footer content goes here -->
+            <section class="overlay" id="overlay">
+			<div class="contenedor-img">
+				<button id="btn-cerrar-popup"><i class="fas fa-times"></i></button>
+				<img src="" alt="">
+			</div>
+			<p class="descripcion"></p>
+		</section>
+			<footer class="contenedor">
+			<div class="redes-sociales">
+				<div class="contenedor-icono">
+					<a href="https://github.com/tremendapithon/proyecto_imt" target="_blank" class="github">
+						<i class="fab fa-github"></i>
+					</a>
+				</div>
+			</div>
+		</footer>
+        </div>
+
+
+    </div>
+    <script>
+        function goToAnalysis() {
+            // Navigate to the analysis section
+            window.location.href = 'analysis.html';
+        }
+
+        function goToDiscussion() {
+            // Navigate to the discussion section
+            window.location.href = 'discussion.html';
+        }
+    </script>
+</body>
+</html>

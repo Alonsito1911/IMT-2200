@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ETL</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/2c36e9b7b1.js"></script>
+	<link rel="stylesheet" href="estilos.css">
+<style>.container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }</style>
+</head>
+<body>
+    <div class="container">
+        <div class="introduction">
+            <h1>Discusión</h1>
+<p>La discusión nos presenta un escenario educativo chileno donde la Prueba de Acceso a la Educación Superior (PAES) refleja diferencias significativas entre los tipos de establecimientos educativos. Los colegios particulares superan a los municipales en promedio hasta por 171 puntos, lo que evidencia brechas que la prueba no ha logrado disminuir. Esta disparidad se extiende también a las diferencias de género en matemáticas, mostrando un crecimiento en la brecha entre hombres y mujeres.</p>
+
+<p>El análisis de regresión polinómica y lineal múltiple, discutido anteriormente, subraya cómo las variables como el promedio de notas y la conexión a internet influyen en el desempeño académico. Sin embargo, al observar los resultados de la PAES por separado en competencia lectora y matemáticas, vemos que la relación entre estas variables y el rendimiento no es tan directa como se podría suponer. La reducción del coeficiente R-cuadrado al aplicar los modelos por separado y en diferentes tipos de establecimientos educativos, especialmente en colegios municipales y subvencionados, implica que hay otros factores que influyen en el rendimiento en estas pruebas.</p>
+
+<p>La calidad de los recursos educativos, el apoyo socioeconómico, el acceso a la tecnología y el capital cultural son solo algunos de los elementos que pueden contribuir a las diferencias en los resultados de la PAES. Los datos del Ministerio de Educación y el análisis de la Pontificia Universidad Católica resaltan la importancia de estos factores. Los promedios dispares en cada prueba y la ponderación de NEM y Ranking, que pueden llevar a resultados inesperados en la postulación, indican que el sistema actual puede estar perpetuando las desigualdades existentes en lugar de nivelar el campo de juego educativo.</p>
+
+<p>Los colegios que encabezan los puntajes, como Los Andes de Vitacura y The Grange School, contrastan con el desempeño de los establecimientos emblemáticos públicos, que no logran figurar entre los primeros 200. Incluso entre los liceos bicentenario, que son una iniciativa para mejorar la calidad educativa en colegios públicos, vemos variaciones significativas en el rendimiento, lo que sugiere que las estrategias implementadas tienen resultados mixtos.</p>
+
+<p>Estos hallazgos apuntan a la necesidad de políticas educativas que aborden no solo la calidad de la enseñanza y el aprendizaje en las aulas, sino también el bienestar y el entorno socioeconómico de los estudiantes. Intervenciones que provean recursos tecnológicos y de aprendizaje, que apoyen las necesidades de los estudiantes de entornos desfavorecidos y que promuevan prácticas educativas inclusivas podrían ayudar a cerrar la brecha. Además, es crucial que el sistema educativo en su conjunto trabaje para comprender y actuar sobre las causas subyacentes de las desigualdades educativas, incluyendo la implementación de un currículo que promueva la igualdad de género y la valoración de todas las disciplinas académicas por igual.</p>
+
+<p>El camino hacia una educación equitativa y de calidad en Chile es complejo y requiere un esfuerzo coordinado y sostenido. Solo así se puede aspirar a un futuro en el que pruebas como la PAES reflejen no solo conocimientos y habilidades, sino también el éxito de un sistema educativo que brinde igualdad de oportunidades para todos sus estudiantes.</p>
+
+        </div>
+		<h2>Proceso de Estudio</h2>
+            <div class="process-images">
+            <div class="process-image" onclick="location.href='etl.html';">
+                <img src="plots/etl2.png" alt="ETL Process" />
+                <p>Proceso ETL</p>
+            </div>
+            <div class="process-image" onclick="location.href='eda.html';">
+                <img src="plots/foto2.png" alt="EDA Process" />
+                <p>Análisis Exploratorio de Datos (EDA)</p>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <!-- Footer content goes here -->
+            <section class="overlay" id="overlay">
+			<div class="contenedor-img">
+				<button id="btn-cerrar-popup"><i class="fas fa-times"></i></button>
+				<img src="" alt="">
+			</div>
+			<p class="descripcion"></p>
+		</section>
+			<footer class="contenedor">
+			<div class="redes-sociales">
+				<div class="contenedor-icono">
+					<a href="https://github.com/tremendapithon/proyecto_imt" target="_blank" class="github">
+						<i class="fab fa-github"></i>
+					</a>
+				</div>
+			</div>
+		</footer>
+
+        </div>
+
+
+    </div>
+    <script>
+        function goToAnalysis() {
+            // Navigate to the analysis section
+            window.location.href = 'analysis.html';
+        }
+
+        function goToDiscussion() {
+            // Navigate to the discussion section
+            window.location.href = 'discussion.html';
+        }
+    </script>
+</body>
+</html>

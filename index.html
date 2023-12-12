@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Análisis de Diferencias Socioeconómicas en la Postulación Universitaria en Chile</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+ <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="introduction">
+            <h1>Análisis de las Diferencias Socioeconómicas en la Postulación a las Universidades en Chile</h1>
+            <h2>Contexto y Motivación</h2>
+
+    <p>Diversos estudios han indicado que en Chile existe una estrecha relación entre las desigualdades socioeconómicas y el acceso a la educación superior. Este análisis busca comprender cómo estas desigualdades afectan la postulación universitaria, explorando la conexión entre el tipo de establecimiento educacional y el puntaje ponderado de la PAES. Investigaremos cómo se distribuyen los promedios de las pruebas obligatorias de la PAES en un mapa de Chile, identificando posibles discrepancias regionales y evaluando si el problema de la educación chilena es un fenómeno generalizado o varía significativamente entre regiones. Además, evaluaremos los puntajes de admisión entre géneros para determinar en qué áreas son más pronunciadas las diferencias. Estudiaremos también la relación entre el promedio de notas en la enseñanza media y los puntajes de admisión, así como el impacto que la conexión a internet y el ingreso socioeconómico pueden tener en el desempeño de los estudiantes en la PAES y su proceso de admisión universitaria.</p>
+
+            <h2>Objetivo</h2>
+           <p>El objetivo de este proyecto es visualizar de manera clara y accesible la influencia de los factores socioeconómicos en el acceso a la educación superior en Chile. Nos proponemos elaborar gráficos comprensibles y atractivos para todo público, con el fin de evidenciar y facilitar la comprensión de la situación actual del país. Para ello, utilizaremos datos recolectados de los registros abiertos del MINEDUC correspondientes al año 2023, buscando con esto proporcionar una herramienta de análisis objetiva y fidedigna que sirva de base para futuras investigaciones y políticas educativas.</p>
+
+            <!-- Additional sections from the image can be similarly formatted and added here -->
+
+            <h2>Proceso de Estudio</h2>
+            <div class="process-images">
+            <div class="process-image" onclick="location.href='etl.html';">
+                <img src="plots/etl2.png" alt="ETL Process" />
+                <p>Proceso ETL</p>
+            </div>
+            <div class="process-image" onclick="location.href='eda.html';">
+                <img src="plots/foto2.png" alt="EDA Process" />
+                <p>Análisis Exploratorio de Datos (EDA)</p>
+            </div>
+            <div class="process-image" onclick="location.href='discussion.html';">
+                <img src="plots/eda.png" alt="Discussion Section" />
+                <p>Discusión</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="footer">
+            <!-- Footer content goes here -->
+            <section class="overlay" id="overlay">
+			<div class="contenedor-img">
+				<button id="btn-cerrar-popup"><i class="fas fa-times"></i></button>
+				<img src="" alt="">
+			</div>
+			<p class="descripcion"></p>
+		</section>
+			<footer class="contenedor">
+			<div class="redes-sociales">
+				<div class="contenedor-icono">
+					<a href="https://github.com/tremendapithon/proyecto_imt" target="_blank" class="github">
+						<i class="fab fa-github"></i>
+					</a>
+				</div>
+			</div>
+		</footer>
+        </div>
+
+
+    </div>
+    <script>
+        function goToAnalysis() {
+            // Navigate to the analysis section
+            window.location.href = 'analysis.html';
+        }
+
+        function goToDiscussion() {
+            // Navigate to the discussion section
+            window.location.href = 'discussion.html';
+        }
+    </script>
+</body>
+</html>
